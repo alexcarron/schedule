@@ -71,7 +71,7 @@ section#ocassions_container {
 		justify-content: center;
 		align-items: center;
 		width: 100%;
-		padding: 2vh 5vh;
+		padding: min(2vh, 2vw) min(5vh, 5vw);
 
 		color: #FFFFFFB0;
 	}
