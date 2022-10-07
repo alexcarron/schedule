@@ -1,0 +1,114 @@
+:root {
+	--very-light-color: #ffffff;
+	--light-color: #e1bebe;
+	--day-highlight-color: #FF6B35;
+	--day-dark-highlight-color: #ffd900;
+	--night-highlight-color: #dcf1ff;
+	--night-dark-highlight-color: #004E89;
+	--dark-color: #654e4e;
+	--very-dark-color: #000000;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+html {
+	background: var(--very-light-color);
+	color: var(--very-dark-color);
+	font-family: 'Montserrat', sans-serif;
+	text-align: center;
+}
+
+header {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	font-weight: 600;
+}
+
+section#current_date_and_time_section {
+	box-sizing: border-box;
+	display: flex;
+	justify-content: space-between;
+	gap: min(5vh, 2.5vw);
+	padding: min(2vh, 1vw) min(5vh, 2.5vw) min(3vh, 1.5vw);
+	width: 100%;
+
+	font-size: min(10vh, 5vw);
+	font-weight: normal;
+	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+	section#date_section {
+		text-align: right;
+	}
+
+	section#time_section {
+		text-align: left;
+	}
+
+section#ocassions_container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	box-sizing: border-box;
+	width: 100%;
+
+	text-align: center;
+}
+
+	div.ocassion_container {
+		display: flex;
+		flex-direction: column;
+		overflow: hidden;
+		position: relative;
+		box-sizing: border-box;
+		justify-content: center;
+		align-items: center;
+		width: 100%;
+		padding: 2vh 5vh;
+
+		color: #FFFFFFB0;
+	}
+
+		p.time_left {
+			position: relative;
+			font-size: min(25vw, 40vh);
+			color: #FFFFFFB0;
+			z-index: 0;
+		}
+
+		p.occasion_name {
+			position: relative;
+			color: #FFFFFFE0;
+			font-size: min(3vw, 5vh);
+			font-weight: normal;
+			z-index: 0;
+		}
+
+			span.time_passed {
+				position: relative;
+				margin-left: min(2vw, 3vh);
+
+				color: #FFFFFFE0;
+				font-size: min(3vw, 5vh);
+				z-index: 0;
+				font-style: italic;
+			}
+
+		div.progress_div {
+			position: absolute;
+			top: 0px;
+			left: 0px;
+			display: flex;
+			background-color: #00000025;
+			width: 100vw;
+			height: 100%;
+			box-shadow: 0px 0px 20px #00000060;
+			z-index: 1;
+		}
