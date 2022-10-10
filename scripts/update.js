@@ -127,6 +127,50 @@ let elements = {
 }
 
 let occasions = {
+	"asleep": {
+		name: "Sleep",
+		color: "#111e4a",
+		start_time: {
+			hours: 00,
+			minutes: 00,
+			seconds: 00,
+		},
+		end_time: {
+			hours: 6,
+			minutes: 50,
+			seconds: 0,
+		},
+		
+	},
+	"morning": {
+		name: "Morning Routine",
+		color: "#e6a42c",
+		start_time: {
+			hours: 6,
+			minutes: 50,
+			seconds: 00,
+		},
+		end_time: {
+			hours: 7,
+			minutes: 30,
+			seconds: 0,
+		},
+		
+	"Go To School": {
+		name: "Go To School",
+		color: "#bdb5a6",
+		start_time: {
+			hours: 7,
+			minutes: 30,
+			seconds: 00,
+		},
+		end_time: {
+			hours: 8,
+			minutes: 00,
+			seconds: 0,
+		},
+		
+	},
 	"physics": {
 		name: "AP Physics 1",
 		color: "#50f9ff",
@@ -138,6 +182,20 @@ let occasions = {
 		end_time: {
 			hours: 8,
 			minutes: 48,
+			seconds: 00,
+		}
+	},
+	"pass1": {
+		name: "Passing Period",
+		color: "#d0d8db",
+		start_time: {
+			hours: 8,
+			minutes: 48,
+			seconds: 00,
+		},
+		end_time: {
+			hours: 8,
+			minutes: 53,
 			seconds: 00,
 		}
 	},
@@ -155,6 +213,20 @@ let occasions = {
 			seconds: 00,
 		}
 	},
+	"pass2": {
+		name: "Passing Period",
+		color: "#d0d8db",
+		start_time: {
+			hours: 9,
+			minutes: 41,
+			seconds: 00,
+		},
+		end_time: {
+			hours: 9,
+			minutes: 46,
+			seconds: 00,
+		}
+	},
 	"comp_sci": {
 		name: "AP Computer Science A",
 		color: "#e97a3a",
@@ -166,6 +238,20 @@ let occasions = {
 		end_time: {
 			hours: 10,
 			minutes: 34,
+			seconds: 00,
+		}
+	},
+	"pass2": {
+		name: "Passing Period",
+		color: "#d0d8db",
+		start_time: {
+			hours: 10,
+			minutes: 34,
+			seconds: 00,
+		},
+		end_time: {
+			hours: 10,
+			minutes: 39,
 			seconds: 00,
 		}
 	},
@@ -211,7 +297,7 @@ let occasions = {
 			seconds: 13,
 		}
 	},
-	"sleep": {
+	"live": {
 		name: "Be Awake",
 		color: "#cccc00",
 		start_time: {
@@ -220,10 +306,25 @@ let occasions = {
 			seconds: 13,
 		},
 		end_time: {
-			hours: 22,
-			minutes: 30,
+			hours: 23,
+			minutes: 00,
 			seconds: 00,
-		}
+		},
+	},
+	"goodnight": {
+		name: "Sleep",
+		color: "#111e4a",
+		start_time: {
+			hours: 23,
+			minutes: 00,
+			seconds: 00,
+		},
+		end_time: {
+			hours: 23,
+			minutes: 59,
+			seconds: 59,
+		},
+		
 	},
 }
 
