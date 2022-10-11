@@ -155,7 +155,7 @@ let occasions = {
 			minutes: 30,
 			seconds: 0,
 		},
-		
+	},
 	"Go To School": {
 		name: "Go To School",
 		color: "#bdb5a6",
