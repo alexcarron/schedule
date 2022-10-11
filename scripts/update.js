@@ -183,7 +183,7 @@ let occasions = {
 			hours: 8,
 			minutes: 48,
 			seconds: 00,
-		}
+		},
 	},
 	"pass1": {
 		name: "Passing Period",
@@ -197,7 +197,7 @@ let occasions = {
 			hours: 8,
 			minutes: 53,
 			seconds: 00,
-		}
+		},
 	},
 	"english": {
 		name: "English 4",
@@ -211,7 +211,7 @@ let occasions = {
 			hours: 9,
 			minutes: 41,
 			seconds: 00,
-		}
+		},
 	},
 	"pass2": {
 		name: "Passing Period",
@@ -225,7 +225,7 @@ let occasions = {
 			hours: 9,
 			minutes: 46,
 			seconds: 00,
-		}
+		},
 	},
 	"comp_sci": {
 		name: "AP Computer Science A",
@@ -239,7 +239,7 @@ let occasions = {
 			hours: 10,
 			minutes: 34,
 			seconds: 00,
-		}
+		},
 	},
 	"pass2": {
 		name: "Passing Period",
@@ -253,7 +253,7 @@ let occasions = {
 			hours: 10,
 			minutes: 39,
 			seconds: 00,
-		}
+		},
 	},
 	"calc": {
 		name: "AP Calculus BC",
@@ -267,7 +267,7 @@ let occasions = {
 			hours: 11,
 			minutes: 27,
 			seconds: 00,
-		}
+		},
 	},
 	"lunch": {
 		name: "Lunch",
@@ -281,7 +281,7 @@ let occasions = {
 			hours: 12,
 			minutes: 00,
 			seconds: 00,
-		}
+		},
 	},
 	"south_tech": {
 		name: "Web & Computer Programming Class",
@@ -295,7 +295,7 @@ let occasions = {
 			hours: 14,
 			minutes: 29,
 			seconds: 13,
-		}
+		},
 	},
 	"live": {
 		name: "Be Awake",
