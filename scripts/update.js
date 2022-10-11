@@ -334,11 +334,13 @@ let occasions = {
 for (occasion_name in occasions) {
 	let occasion = occasions[occasion_name],
 		occasions_container = document.querySelector("#ocassions_container"),
-		occasion_container = document.createElement("div");
+		occasion_container = document.createElement("div"),
+		num_of_occasions = Object.keys(occasions).length;
 
 	occasion_container.classList.add("ocassion_container");
 	occasion_container.id = occasion_name;
 	occasion_container.style["background-color"] = occasion.color;
+	occasion_container.style["padding"] = `min(${14.9/num_of_occasions}vh, ${14.9/num_of_occasions}vw)`;
 	occasions_container.appendChild(occasion_container);
 
 	occasion.occasion_name_p = document.createElement("p");
