@@ -140,7 +140,7 @@ let occasions = {
 			minutes: 50,
 			seconds: 0,
 		},
-		
+
 	},
 	"morning": {
 		name: "Morning Routine",
@@ -156,7 +156,7 @@ let occasions = {
 			seconds: 0,
 		},
 	},
-	"Go To School": {
+	"school": {
 		name: "Go To School",
 		color: "#bdb5a6",
 		start_time: {
@@ -169,7 +169,7 @@ let occasions = {
 			minutes: 00,
 			seconds: 0,
 		},
-		
+
 	},
 	"physics": {
 		name: "AP Physics 1",
@@ -324,7 +324,7 @@ let occasions = {
 			minutes: 59,
 			seconds: 59,
 		},
-		
+
 	},
 }
 
@@ -399,9 +399,3 @@ setInterval(function() {
 
 
 }, 1000);
-
-
-// 29 - 28 - 01
-// 29 - 29 - 00
-// 29 - 30 - 59
-// 29 - 31 - 58
