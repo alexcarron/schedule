@@ -1,4 +1,5 @@
 :root {
+	--VAR: 1;
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');
@@ -31,9 +32,11 @@ section#current_date_and_time_section {
 	padding: min(2vh, 1vw) min(5vh, 2.5vw) min(3vh, 1.5vw);
 	width: 100%;
 
-	font-size: min(10vh, 5vw);
-	font-weight: normal;
+	color: #00000040;
+	font-size: min(10vh, 4vw);
+	font-weight: bold;
 	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+	z-index: 1;
 }
 
 	section#date_section {
@@ -45,13 +48,17 @@ section#current_date_and_time_section {
 	}
 
 section#ocassions_container {
+	position: absolute;
+	left: 0;
+	top: 0;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	box-sizing: border-box;
-	width: 100%;
+	height: 100vh;
+	width: 100vw;
 
 	text-align: center;
+	z-index: 0;
 }
 
 	div.ocassion_container {
@@ -59,11 +66,9 @@ section#ocassions_container {
 		flex-direction: column;
 		overflow: hidden;
 		position: relative;
-		box-sizing: border-box;
 		justify-content: center;
 		align-items: center;
 		width: 100%;
-		padding: min(2vh, 2vw) min(5vh, 5vw);
 
 		color: #FFFFFFB0;
 	}
