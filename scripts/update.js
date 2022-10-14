@@ -79,7 +79,7 @@ function get24Hour(hour, meridian) {
 	return hour
 }
 
-function getTimeInSec(time) {
+function getSec(time) {
 	let { hours, minutes, seconds } = time;
 
 	return hours*60*60 + minutes*60 + seconds;
@@ -92,7 +92,10 @@ function getTime(seconds) {
 	return { hours: hours, minutes: minutes, seconds: seconds }
 }
 
-function getTimer(time) {
+function getTimer(time_in_seconds) {
+
+	let time = getTime(time_in_seconds)
+
 	let { hours, minutes, seconds } = time,
 		timer = "0:00:00"
 
@@ -159,31 +162,54 @@ let occasions = {
 	"school": {
 		name: "Go To School",
 		color: "#bdb5a6",
-		start_time: {
-			hours: 7,
-			minutes: 30,
-			seconds: 00,
-		},
-		end_time: {
-			hours: 8,
-			minutes: 00,
-			seconds: 0,
-		},
+		durations: [
+			{
+				weekdays: [1, 2, 3, 4, 5],
+				start_time: {
+					hours: 7,
+					minutes: 30,
+					seconds: 00,
+				},
+				end_time: {
+					hours: 8,
+					minutes: 00,
+					seconds: 0,
+				}
+			},
+		]
 
 	},
 	"physics": {
 		name: "AP Physics 1",
 		color: "#50f9ff",
-		start_time: {
-			hours: 8,
-			minutes: 00,
-			seconds: 00,
-		},
-		end_time: {
-			hours: 8,
-			minutes: 48,
-			seconds: 00,
-		},
+		durations: [
+			{
+				weekdays: [1, 2, 5],
+				start_time: {
+					hours: 8,
+					minutes: 00,
+					seconds: 00,
+				},
+				end_time: {
+					hours: 8,
+					minutes: 48,
+					seconds: 00,
+				},
+			},
+			{
+				weekdays: [3],
+				start_time: {
+					hours: 8,
+					minutes: 00,
+					seconds: 00,
+				},
+				end_time: {
+					hours: 9,
+					minutes: 28,
+					seconds: 00,
+				},
+			},
+		],
 	},
 	"pass1": {
 		name: "Passing Period",
@@ -216,86 +242,155 @@ let occasions = {
 	"pass2": {
 		name: "Passing Period",
 		color: "#d0d8db",
-		start_time: {
-			hours: 9,
-			minutes: 41,
-			seconds: 00,
-		},
-		end_time: {
-			hours: 9,
-			minutes: 46,
-			seconds: 00,
-		},
+		durations: [
+			{
+				weekdays: [1, 2, 5],
+				start_time: {
+					hours: 9,
+					minutes: 41,
+					seconds: 00,
+				},
+				end_time: {
+					hours: 9,
+					minutes: 46,
+					seconds: 00,
+				},
+			}
+		],
 	},
 	"comp_sci": {
 		name: "AP Computer Science A",
 		color: "#e97a3a",
-		start_time: {
-			hours: 9,
-			minutes: 46,
-			seconds: 00,
-		},
-		end_time: {
-			hours: 10,
-			minutes: 34,
-			seconds: 00,
-		},
+		durations: [
+			{
+				weekdays: [1, 2, 5],
+				start_time: {
+					hours: 9,
+					minutes: 46,
+					seconds: 00,
+				},
+				end_time: {
+					hours: 10,
+					minutes: 34,
+					seconds: 00,
+				},
+			},
+			{
+				weekdays: [3],
+				start_time: {
+					hours: 9,
+					minutes: 33,
+					seconds: 00,
+				},
+				end_time: {
+					hours: 11,
+					minutes: 01,
+					seconds: 00,
+				},
+			},
+		]
 	},
-	"pass2": {
+	"pass3": {
 		name: "Passing Period",
 		color: "#d0d8db",
-		start_time: {
-			hours: 10,
-			minutes: 34,
-			seconds: 00,
-		},
-		end_time: {
-			hours: 10,
-			minutes: 39,
-			seconds: 00,
-		},
+		durations: [
+			{
+				weekdays: [1, 2, 5],
+				start_time: {
+					hours: 10,
+					minutes: 34,
+					seconds: 00,
+				},
+				end_time: {
+					hours: 10,
+					minutes: 39,
+					seconds: 00,
+				},
+			},
+		]
 	},
 	"calc": {
 		name: "AP Calculus BC",
 		color: "#ffd900",
-		start_time: {
-			hours: 10,
-			minutes: 39,
-			seconds: 00,
-		},
-		end_time: {
-			hours: 11,
-			minutes: 27,
-			seconds: 00,
-		},
+		durations: [
+			{
+				weekdays: [1, 2, 5],
+				start_time: {
+					hours: 10,
+					minutes: 39,
+					seconds: 00,
+				},
+				end_time: {
+					hours: 11,
+					minutes: 27,
+					seconds: 00,
+				},
+			},
+			{
+				weekdays: [4],
+				start_time: {
+					hours: 9,
+					minutes: 32,
+					seconds: 00,
+				},
+				end_time: {
+					hours: 11,
+					minutes: 01,
+					seconds: 00,
+				},
+			},
+		],
 	},
 	"lunch": {
 		name: "Lunch",
 		color: "#9ce1ef",
-		start_time: {
-			hours: 11,
-			minutes: 27,
-			seconds: 00,
-		},
-		end_time: {
-			hours: 12,
-			minutes: 00,
-			seconds: 00,
-		},
+		durations: [
+			{
+				weekdays: [1, 2, 5],
+				start_time: {
+					hours: 11,
+					minutes: 27,
+					seconds: 00,
+				},
+				end_time: {
+					hours: 12,
+					minutes: 00,
+					seconds: 00,
+				},
+			},
+			{
+				weekdays: [3, 4],
+				start_time: {
+					hours: 11,
+					minutes: 01,
+					seconds: 00,
+				},
+				end_time: {
+					hours: 12,
+					minutes: 00,
+					seconds: 00,
+				},
+			},
+		]
 	},
 	"south_tech": {
 		name: "Web & Computer Programming Class",
 		color: "#ee294a",
-		start_time: {
-			hours: 12,
-			minutes: 00,
-			seconds: 00,
-		},
-		end_time: {
-			hours: 14,
-			minutes: 29,
-			seconds: 13,
-		},
+		durations: [
+			{
+				weekdays: [1, 2, 3, 4, 5],
+				start_time: {
+					hours: 12,
+					minutes: 00,
+					seconds: 00,
+				},
+				end_time: {
+					hours: 14,
+					minutes: 29,
+					seconds: 13,
+				},
+			}
+		]
 	},
 	"live": {
 		name: "Be Awake",
@@ -334,13 +429,11 @@ let occasions = {
 for (occasion_name in occasions) {
 	let occasion = occasions[occasion_name],
 		occasions_container = document.querySelector("#ocassions_container"),
-		occasion_container = document.createElement("div"),
-		num_of_occasions = Object.keys(occasions).length;
+		occasion_container = document.createElement("div");
 
 	occasion_container.classList.add("ocassion_container");
 	occasion_container.id = occasion_name;
 	occasion_container.style["background-color"] = occasion.color;
-	occasion_container.style["padding"] = `min(${14.9/num_of_occasions}vh, ${14.9/num_of_occasions}vw)`;
 	occasions_container.appendChild(occasion_container);
 
 	occasion.occasion_name_p = document.createElement("p");
@@ -365,33 +458,60 @@ setInterval(function() {
 
 	for (occasion_name in occasions) {
 
+
 		let occasion = occasions[occasion_name],
-			{ start_time, end_time } = occasion,
 			occasion_container = document.querySelector(`#${occasion_name}`),
-			now_time_in_sec = getTimeInSec(now.time),
-			start_time_in_sec = getTimeInSec( start_time ),
-			end_time_in_sec = getTimeInSec( end_time ),
-			duration_in_sec = end_time_in_sec - start_time_in_sec,
-			time_left_in_sec = end_time_in_sec - now_time_in_sec;
+			start_time,
+			end_time;
 
 
-		if (start_time_in_sec > now_time_in_sec || now_time_in_sec > end_time_in_sec) {
+		if (occasion.durations) {
+
+			console.log("duration");
+
+			for (duration of occasion.durations) {
+
+				// Skip if not for this weekday
+				if ( !duration.weekdays.includes( now.day_of_week ) ) {
+					occasion_container.innerHTML = "";
+					continue;
+				}
+
+				// Define variables
+				({ start_time, end_time } = duration);
+			}
+
+		}
+		else {
+			console.log("else duration");
+			({ start_time, end_time } = occasion);
+		}
+
+		console.log(now.time);
+
+		let now_in_sec = getSec( now.time ),
+			start_in_sec = getSec( start_time ),
+			end_in_sec = getSec( end_time ),
+			duration_in_sec = end_in_sec - start_in_sec,
+			time_left_in_sec = end_in_sec - now_in_sec;
+			time_passed_in_sec = now_in_sec - start_in_sec;
+
+		// Skip if not in between start and end times
+		if ( start_in_sec > now_in_sec || now_in_sec > end_in_sec ) {
 			occasion_container.innerHTML = "";
 			continue
 		}
 
-		let time_left = getTime(time_left_in_sec),
-			time_passed = getTime(now_time_in_sec - start_time_in_sec),
-			time_left_timer = getTimer(time_left),
-			time_passed_timer = getTimer(time_passed);
+		// Add time to container
+		occasion.time_left_p.textContent = getTimer(time_left_in_sec);
+		occasion.time_passed_span.textContent = getTimer(time_passed_in_sec);
 
-
-		occasion.time_left_p.textContent = time_left_timer;
-		occasion.time_passed_span.textContent = time_passed_timer;
-
-		progress_percent = (now_time_in_sec - start_time_in_sec) / duration_in_sec;
+		// Set progress bar
+		let progress_percent = (now_in_sec - start_in_sec) / duration_in_sec;
 		occasion.progress_div.style.width = `${progress_percent*100}%`;
 
+		// Add children elements
+		occasion_container.style.height = "100vh";
 		occasion.occasion_name_p.appendChild(occasion.time_passed_span);
 		occasion_container.appendChild(occasion.occasion_name_p);
 		occasion_container.appendChild(occasion.time_left_p);
