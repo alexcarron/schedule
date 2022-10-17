@@ -474,6 +474,7 @@ setInterval(function() {
 				// Skip if not for this weekday
 				if ( !duration.weekdays.includes( now.day_of_week ) ) {
 					occasion_container.innerHTML = "";
+					occasion_container.style.height = "0px";
 					continue;
 				}
 
@@ -499,6 +500,7 @@ setInterval(function() {
 		// Skip if not in between start and end times
 		if ( start_in_sec > now_in_sec || now_in_sec > end_in_sec ) {
 			occasion_container.innerHTML = "";
+			occasion_container.style.height = "0px";
 			continue
 		}
 
