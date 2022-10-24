@@ -493,37 +493,46 @@ setInterval(function() {
 	setNowToCurrentTime()
 	displayCurrentTime()
 
-	console.log(occasions)
+	console.log(occasions);
 
-	ocassion_loop:
 	for (let occasion_name in occasions) {
 
+		console.log("%cOccasion Loop", "font-style: bold; color: cyan; text-decoration: underline;");
+		console.log(occasion_name);
 
 		let occasion = occasions[occasion_name],
 			occasion_container = document.querySelector(`#${occasion_name}`),
 			start_time,
-			end_time;
+			end_time,
+			isToday = false,
+			isHappening = false;
+
 
 		if (occasion.durations) {
 
+			console.log("%cCheck Duration", "font-style: bold; color: yellow; text-decoration: underline;");
+
 			for (let duration of occasion.durations) {
 
-				// Skip if not for this weekday
-				if ( !duration.weekdays.includes( now.day_of_week ) ) {
-					occasion_container.innerHTML = "";
-					occasion_container.style.height = "0px";
-					continue ocassion_loop;
-				}
+				console.log(`if ${now.day_of_week} is in ${duration.weekdays}`)
 
-				// Define variables
-				({ start_time, end_time } = duration);
+				// Skip if not for this weekday
+				if ( duration.weekdays.includes( now.day_of_week ) ) {
+					isToday = true;
+					({ start_time, end_time } = duration);
+					break;
+				}
+			}
+
+			if (!isToday) {
+				occasion_container.innerHTML = "";
+				occasion_container.style.height = "0px";
 			}
 
 		}
 		else {
 			({ start_time, end_time } = occasion);
 		}
-
 
 		let now_in_sec = getSec( now.time ),
 			start_in_sec = getSec( start_time ),
@@ -536,7 +545,7 @@ setInterval(function() {
 		if ( start_in_sec > now_in_sec || now_in_sec >= end_in_sec ) {
 			occasion_container.innerHTML = "";
 			occasion_container.style.height = "0px";
-			continue
+			continue;
 		}
 
 		// Add time to container
