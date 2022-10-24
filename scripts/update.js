@@ -20,18 +20,18 @@ let date = new Date(),
 		7: "Sunday",
 	},
 	months = {
-		1: "January",
-		2: "Feburary",
-		3: "March",
-		4: "April",
+		1: "Jan",
+		2: "Feb",
+		3: "Mar",
+		4: "Apr",
 		5: "May",
 		6: "June",
 		7: "July",
-		8: "August",
-		9: "September",
-		10: "October",
-		11: "November",
-		12: "December",
+		8: "Aug",
+		9: "Sept",
+		10: "Oct",
+		11: "Nov",
+		12: "Dec",
 	}
 
 
@@ -85,10 +85,11 @@ function getSec(time) {
 	return hours*60*60 + minutes*60 + seconds;
 }
 
-function getTime(seconds) {
-	hours = ~~(seconds / 3600)
-	minutes = ~~((seconds - hours*3600) / 60)
-	seconds = seconds - hours*3600 - minutes*60
+function getTime(total_seconds) {
+	let hours = ~~(total_seconds / 3600),
+		minutes = ~~((total_seconds - hours*3600) / 60),
+		seconds = total_seconds - hours*3600 - minutes*60
+
 	return { hours: hours, minutes: minutes, seconds: seconds }
 }
 
@@ -115,7 +116,7 @@ function getTimer(time_in_seconds) {
 
 function displayCurrentTime() {
 	elements.day_of_week.textContent = `${days_of_week[now.day_of_week]},`;
-	elements.month.textContent = months[now.month];
+	elements.month.textContent = `${months[now.month+1]}.`;
 	elements.day_of_month.textContent = `${now.day}th`;
 	elements.time.textContent = `${get12Hour(now.time.hours)}:${getDoubleDigits(now.time.minutes)}:${getDoubleDigits(now.time.seconds)}`
 	elements.meridian.textContent = getMeridian(now.time.hours);
@@ -134,9 +135,9 @@ let occasions = {
 		name: "Sleep",
 		color: "#111e4a",
 		start_time: {
-			hours: 00,
-			minutes: 00,
-			seconds: 00,
+			hours: 0,
+			minutes: 0,
+			seconds: 0,
 		},
 		end_time: {
 			hours: 6,
@@ -151,7 +152,7 @@ let occasions = {
 		start_time: {
 			hours: 6,
 			minutes: 50,
-			seconds: 00,
+			seconds: 0,
 		},
 		end_time: {
 			hours: 7,
@@ -168,12 +169,12 @@ let occasions = {
 				start_time: {
 					hours: 7,
 					minutes: 30,
-					seconds: 00,
+					seconds: 0,
 				},
 				end_time: {
 					hours: 8,
-					minutes: 00,
-					seconds: 0,
+					minutes: 0,
+					seconds: 3,
 				}
 			},
 		]
@@ -187,26 +188,26 @@ let occasions = {
 				weekdays: [1, 2, 5],
 				start_time: {
 					hours: 8,
-					minutes: 00,
-					seconds: 00,
+					minutes: 0,
+					seconds: 3,
 				},
 				end_time: {
 					hours: 8,
 					minutes: 48,
-					seconds: 00,
+					seconds: 3,
 				},
 			},
 			{
 				weekdays: [3],
 				start_time: {
 					hours: 8,
-					minutes: 00,
-					seconds: 00,
+					minutes: 0,
+					seconds: 3,
 				},
 				end_time: {
 					hours: 9,
 					minutes: 28,
-					seconds: 00,
+					seconds: 3,
 				},
 			},
 		],
@@ -214,30 +215,66 @@ let occasions = {
 	"pass1": {
 		name: "Passing Period",
 		color: "#d0d8db",
-		start_time: {
-			hours: 8,
-			minutes: 48,
-			seconds: 00,
-		},
-		end_time: {
-			hours: 8,
-			minutes: 53,
-			seconds: 00,
-		},
+		durations: [
+			{
+				weekdays: [1, 2, 5],
+				start_time: {
+					hours: 8,
+					minutes: 48,
+					seconds: 3,
+				},
+				end_time: {
+					hours: 8,
+					minutes: 53,
+					seconds: 3,
+				},
+			},
+			{
+				weekdays: [3, 4],
+				start_time: {
+					hours: 9,
+					minutes: 28,
+					seconds: 3,
+				},
+				end_time: {
+					hours: 9,
+					minutes: 33,
+					seconds: 3,
+				},
+			}
+		],
 	},
 	"english": {
 		name: "English 4",
 		color: "#1A9E65",
-		start_time: {
-			hours: 8,
-			minutes: 53,
-			seconds: 00,
-		},
-		end_time: {
-			hours: 9,
-			minutes: 41,
-			seconds: 00,
-		},
+		durations: [
+			{
+				weekdays: [1, 2, 5],
+				start_time: {
+					hours: 8,
+					minutes: 53,
+					seconds: 3,
+				},
+				end_time: {
+					hours: 9,
+					minutes: 41,
+					seconds: 3,
+				},
+			},
+			{
+				weekdays: [4],
+				start_time: {
+					hours: 8,
+					minutes: 0,
+					seconds: 3,
+				},
+				end_time: {
+					hours: 9,
+					minutes: 28,
+					seconds: 3,
+				},
+			}
+		],
 	},
 	"pass2": {
 		name: "Passing Period",
@@ -248,12 +285,12 @@ let occasions = {
 				start_time: {
 					hours: 9,
 					minutes: 41,
-					seconds: 00,
+					seconds: 3,
 				},
 				end_time: {
 					hours: 9,
 					minutes: 46,
-					seconds: 00,
+					seconds: 3,
 				},
 			}
 		],
@@ -267,12 +304,12 @@ let occasions = {
 				start_time: {
 					hours: 9,
 					minutes: 46,
-					seconds: 00,
+					seconds: 3,
 				},
 				end_time: {
 					hours: 10,
 					minutes: 34,
-					seconds: 00,
+					seconds: 3,
 				},
 			},
 			{
@@ -280,12 +317,12 @@ let occasions = {
 				start_time: {
 					hours: 9,
 					minutes: 33,
-					seconds: 00,
+					seconds: 3,
 				},
 				end_time: {
 					hours: 11,
-					minutes: 01,
-					seconds: 00,
+					minutes: 1,
+					seconds: 3,
 				},
 			},
 		]
@@ -299,12 +336,12 @@ let occasions = {
 				start_time: {
 					hours: 10,
 					minutes: 34,
-					seconds: 00,
+					seconds: 3,
 				},
 				end_time: {
 					hours: 10,
 					minutes: 39,
-					seconds: 00,
+					seconds: 3,
 				},
 			},
 		]
@@ -318,12 +355,12 @@ let occasions = {
 				start_time: {
 					hours: 10,
 					minutes: 39,
-					seconds: 00,
+					seconds: 3,
 				},
 				end_time: {
 					hours: 11,
 					minutes: 27,
-					seconds: 00,
+					seconds: 3,
 				},
 			},
 			{
@@ -331,12 +368,12 @@ let occasions = {
 				start_time: {
 					hours: 9,
 					minutes: 32,
-					seconds: 00,
+					seconds: 3,
 				},
 				end_time: {
 					hours: 11,
-					minutes: 01,
-					seconds: 00,
+					minutes: 1,
+					seconds: 3,
 				},
 			},
 		],
@@ -350,25 +387,25 @@ let occasions = {
 				start_time: {
 					hours: 11,
 					minutes: 27,
-					seconds: 00,
+					seconds: 3,
 				},
 				end_time: {
 					hours: 12,
-					minutes: 00,
-					seconds: 00,
+					minutes: 0,
+					seconds: 0,
 				},
 			},
 			{
 				weekdays: [3, 4],
 				start_time: {
 					hours: 11,
-					minutes: 01,
-					seconds: 00,
+					minutes: 1,
+					seconds: 3,
 				},
 				end_time: {
 					hours: 12,
-					minutes: 00,
-					seconds: 00,
+					minutes: 0,
+					seconds: 0,
 				},
 			},
 		]
@@ -381,8 +418,8 @@ let occasions = {
 				weekdays: [1, 2, 3, 4, 5],
 				start_time: {
 					hours: 12,
-					minutes: 00,
-					seconds: 00,
+					minutes: 0,
+					seconds: 0,
 				},
 				end_time: {
 					hours: 14,
@@ -402,8 +439,8 @@ let occasions = {
 		},
 		end_time: {
 			hours: 23,
-			minutes: 00,
-			seconds: 00,
+			minutes: 0,
+			seconds: 0,
 		},
 	},
 	"goodnight": {
@@ -411,8 +448,8 @@ let occasions = {
 		color: "#111e4a",
 		start_time: {
 			hours: 23,
-			minutes: 00,
-			seconds: 00,
+			minutes: 0,
+			seconds: 0,
 		},
 		end_time: {
 			hours: 23,
@@ -426,7 +463,7 @@ let occasions = {
 
 
 
-for (occasion_name in occasions) {
+for (let occasion_name in occasions) {
 	let occasion = occasions[occasion_name],
 		occasions_container = document.querySelector("#ocassions_container"),
 		occasion_container = document.createElement("div");
@@ -456,7 +493,10 @@ setInterval(function() {
 	setNowToCurrentTime()
 	displayCurrentTime()
 
-	for (occasion_name in occasions) {
+	console.log(occasions)
+
+	ocassion_loop:
+	for (let occasion_name in occasions) {
 
 
 		let occasion = occasions[occasion_name],
@@ -464,18 +504,15 @@ setInterval(function() {
 			start_time,
 			end_time;
 
-
 		if (occasion.durations) {
 
-			console.log("duration");
-
-			for (duration of occasion.durations) {
+			for (let duration of occasion.durations) {
 
 				// Skip if not for this weekday
 				if ( !duration.weekdays.includes( now.day_of_week ) ) {
 					occasion_container.innerHTML = "";
 					occasion_container.style.height = "0px";
-					continue;
+					continue ocassion_loop;
 				}
 
 				// Define variables
@@ -484,21 +521,19 @@ setInterval(function() {
 
 		}
 		else {
-			console.log("else duration");
 			({ start_time, end_time } = occasion);
 		}
 
-		console.log(now.time);
 
 		let now_in_sec = getSec( now.time ),
 			start_in_sec = getSec( start_time ),
 			end_in_sec = getSec( end_time ),
 			duration_in_sec = end_in_sec - start_in_sec,
-			time_left_in_sec = end_in_sec - now_in_sec;
+			time_left_in_sec = end_in_sec - now_in_sec,
 			time_passed_in_sec = now_in_sec - start_in_sec;
 
 		// Skip if not in between start and end times
-		if ( start_in_sec > now_in_sec || now_in_sec > end_in_sec ) {
+		if ( start_in_sec > now_in_sec || now_in_sec >= end_in_sec ) {
 			occasion_container.innerHTML = "";
 			occasion_container.style.height = "0px";
 			continue
