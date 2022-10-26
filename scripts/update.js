@@ -493,12 +493,12 @@ setInterval(function() {
 	setNowToCurrentTime()
 	displayCurrentTime()
 
-	console.log(occasions);
+	console.log(Object.keys(occasions));
 
-	for (let occasion_name in occasions) {
+	console.log("\n\n%cOccasion Loop", "font-style: bold; color: cyan; text-decoration: underline;");
+	for (let occasion_name of Object.keys(occasions)) {
 
-		console.log("%cOccasion Loop", "font-style: bold; color: cyan; text-decoration: underline;");
-		console.log(occasion_name);
+		console.log(`\n%c${occasion_name}`, "color: cyan;");
 
 		let occasion = occasions[occasion_name],
 			occasion_container = document.querySelector(`#${occasion_name}`),
@@ -520,13 +520,14 @@ setInterval(function() {
 				if ( duration.weekdays.includes( now.day_of_week ) ) {
 					isToday = true;
 					({ start_time, end_time } = duration);
-					break;
+					continue;
 				}
 			}
 
 			if (!isToday) {
 				occasion_container.innerHTML = "";
 				occasion_container.style.height = "0px";
+				continue;
 			}
 
 		}
@@ -534,12 +535,16 @@ setInterval(function() {
 			({ start_time, end_time } = occasion);
 		}
 
+		console.log({ start_time, end_time });
+
 		let now_in_sec = getSec( now.time ),
 			start_in_sec = getSec( start_time ),
 			end_in_sec = getSec( end_time ),
 			duration_in_sec = end_in_sec - start_in_sec,
 			time_left_in_sec = end_in_sec - now_in_sec,
 			time_passed_in_sec = now_in_sec - start_in_sec;
+
+		console.log({ now_in_sec, start_in_sec, end_in_sec, duration_in_sec, time_left_in_sec, time_passed_in_sec });
 
 		// Skip if not in between start and end times
 		if ( start_in_sec > now_in_sec || now_in_sec >= end_in_sec ) {
@@ -562,8 +567,5 @@ setInterval(function() {
 		occasion_container.appendChild(occasion.occasion_name_p);
 		occasion_container.appendChild(occasion.time_left_p);
 		occasion_container.appendChild(occasion.progress_div);
-
 	}
-
-
 }, 1000);
